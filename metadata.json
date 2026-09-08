@@ -1,0 +1,6 @@
+{
+  "name": "Drishti-X",
+  "description": "Explainable AI for Diabetic Retinopathy Screening in rural and resource-constrained healthcare settings.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
