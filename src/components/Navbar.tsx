@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Activity,
+  Eye,
   ChevronDown,
   LogOut,
   UserCircle,
@@ -135,7 +135,7 @@ export default function Navbar({
 
             <div className="w-10 h-10 rounded-xl bg-teal-700 flex items-center justify-center shadow-lg shadow-teal-950/30">
 
-              <Activity className="w-5 h-5 text-white" />
+              <Eye className="w-5 h-5 text-white" />
 
             </div>
 
