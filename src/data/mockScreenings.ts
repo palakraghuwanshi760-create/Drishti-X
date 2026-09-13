@@ -1,4 +1,5 @@
 import { ScreeningRecord, DemoPreset } from '../types';
+
 import { SAMPLE_FUNDUS_IMAGES } from '../assets/sampleImages';
 
 export const INITIAL_STATS = {
@@ -11,6 +12,7 @@ export const INITIAL_STATS = {
 export const INITIAL_SCREENINGS: ScreeningRecord[] = [
   {
     id: 'SCR-2026-0104',
+    patientName: 'Ramesh Kumar',
     patientCode: 'MH-PHC-0891',
     screeningDate: '2026-09-08',
     patientAge: 58,
@@ -26,16 +28,20 @@ export const INITIAL_SCREENINGS: ScreeningRecord[] = [
       noDR: 0.04,
       mild: 0.09,
       moderate: 0.87,
-      severe: 0.00,
+      severe: 0.0,
     },
     referralPriority: 'HIGH',
     status: 'Referred',
-    clinicalNextStep: 'Clinical evaluation by a qualified eye-care professional is recommended based on this screening result.',
-    notes: 'Patient reports 7-year type 2 diabetes history with occasional blurry vision. Referred to District Hospital.',
+    clinicalNextStep:
+      'Clinical evaluation by a qualified eye-care professional is recommended based on this screening result.',
+    notes:
+      'Patient reports 7-year type 2 diabetes history with occasional blurry vision. Referred to District Hospital.',
     syncedToCloud: true,
   },
+
   {
     id: 'SCR-2026-0103',
+    patientName: 'Amit Sharma',
     patientCode: 'MH-PHC-0889',
     screeningDate: '2026-09-08',
     patientAge: 46,
@@ -51,16 +57,20 @@ export const INITIAL_SCREENINGS: ScreeningRecord[] = [
       noDR: 0.94,
       mild: 0.04,
       moderate: 0.02,
-      severe: 0.00,
+      severe: 0.0,
     },
     referralPriority: 'LOW',
     status: 'Completed',
-    clinicalNextStep: 'Routine annual diabetic eye screening advised at next primary health checkup.',
-    notes: 'Clear media, normal vascular distribution without focal microaneurysms.',
+    clinicalNextStep:
+      'Routine annual diabetic eye screening advised at next primary health checkup.',
+    notes:
+      'Clear media, normal vascular distribution without focal microaneurysms.',
     syncedToCloud: true,
   },
+
   {
     id: 'SCR-2026-0102',
+    patientName: 'Suresh Patil',
     patientCode: 'MH-PHC-0887',
     screeningDate: '2026-09-07',
     patientAge: 62,
@@ -76,16 +86,20 @@ export const INITIAL_SCREENINGS: ScreeningRecord[] = [
       noDR: 0.12,
       mild: 0.81,
       moderate: 0.07,
-      severe: 0.00,
+      severe: 0.0,
     },
     referralPriority: 'MODERATE',
     status: 'Pending Review',
-    clinicalNextStep: 'Recommend tele-ophthalmology review and blood glucose glycemic control monitoring within 3-6 months.',
-    notes: 'Sparse microvascular focal points near fovea.',
+    clinicalNextStep:
+      'Recommend tele-ophthalmology review and blood glucose glycemic control monitoring within 3-6 months.',
+    notes:
+      'Sparse microvascular focal points near fovea.',
     syncedToCloud: true,
   },
+
   {
     id: 'SCR-2026-0101',
+    patientName: 'Meena Devi',
     patientCode: 'MH-PHC-0884',
     screeningDate: '2026-09-07',
     patientAge: 65,
@@ -105,12 +119,16 @@ export const INITIAL_SCREENINGS: ScreeningRecord[] = [
     },
     referralPriority: 'HIGH',
     status: 'Referred',
-    clinicalNextStep: 'Urgent referral to District Eye Hospital or tertiary vitreo-retina clinic within 2 weeks.',
-    notes: 'Venous caliber irregularities and multi-quadrant retinal attention.',
+    clinicalNextStep:
+      'Urgent referral to District Eye Hospital or tertiary vitreo-retina clinic within 2 weeks.',
+    notes:
+      'Venous caliber irregularities and multi-quadrant retinal attention.',
     syncedToCloud: true,
   },
+
   {
     id: 'SCR-2026-0100',
+    patientName: 'Kavita Joshi',
     patientCode: 'MH-PHC-0882',
     screeningDate: '2026-09-06',
     patientAge: 51,
@@ -126,16 +144,20 @@ export const INITIAL_SCREENINGS: ScreeningRecord[] = [
       noDR: 0.96,
       mild: 0.03,
       moderate: 0.01,
-      severe: 0.00,
+      severe: 0.0,
     },
     referralPriority: 'LOW',
     status: 'Completed',
-    clinicalNextStep: 'Routine annual diabetic eye screening advised.',
-    notes: 'Normal screening. Patient provided lifestyle & dietary counseling.',
+    clinicalNextStep:
+      'Routine annual diabetic eye screening advised.',
+    notes:
+      'Normal screening. Patient provided lifestyle & dietary counseling.',
     syncedToCloud: true,
   },
+
   {
     id: 'SCR-2026-0099',
+    patientName: 'Mohan Verma',
     patientCode: 'MH-PHC-0880',
     screeningDate: '2026-09-05',
     patientAge: 49,
@@ -144,30 +166,37 @@ export const INITIAL_SCREENINGS: ScreeningRecord[] = [
     examinerName: 'Ramesh Patil (Arogya Mitra)',
     fundusImage: SAMPLE_FUNDUS_IMAGES.poorQuality,
     imageQuality: 'POOR',
-    qualityIssues: ['Insufficient pupil dilation', 'Lens blur artifact'],
+    qualityIssues: [
+      'Insufficient pupil dilation',
+      'Lens blur artifact',
+    ],
     drGrade: 'MODERATE_DR',
     drGradeLabel: 'Inconclusive - Poor Image Quality',
     confidenceScore: 0.52,
     classProbabilities: {
       noDR: 0.35,
       mild: 0.25,
-      moderate: 0.30,
-      severe: 0.10,
+      moderate: 0.3,
+      severe: 0.1,
     },
     referralPriority: 'MODERATE',
     status: 'Follow-up Scheduled',
-    clinicalNextStep: 'Repeat fundus photography advised with optimal pupil dilation and lens alignment.',
-    notes: 'Screening could not be completed reliably due to optical haze and patient blinking.',
+    clinicalNextStep:
+      'Repeat fundus photography advised with optimal pupil dilation and lens alignment.',
+    notes:
+      'Screening could not be completed reliably due to optical haze and patient blinking.',
     syncedToCloud: false,
-  }
+  },
 ];
 
 export const DEMO_PRESETS: DemoPreset[] = [
   {
     key: 'normal',
     label: '1. Normal Screening (No DR)',
-    description: 'Crisp fundus scan with healthy retina, optic disc, and macula. 94% confidence, Low risk.',
+    description:
+      'Crisp fundus scan with healthy retina, optic disc, and macula. 94% confidence, Low risk.',
     record: {
+      patientName: 'Anjali Sharma',
       patientCode: 'MH-24-0912',
       patientAge: 48,
       patientSex: 'Male',
@@ -176,17 +205,27 @@ export const DEMO_PRESETS: DemoPreset[] = [
       drGrade: 'NO_DR',
       drGradeLabel: 'No Apparent DR Detected',
       confidenceScore: 0.94,
-      classProbabilities: { noDR: 0.94, mild: 0.04, moderate: 0.02, severe: 0.00 },
+      classProbabilities: {
+        noDR: 0.94,
+        mild: 0.04,
+        moderate: 0.02,
+        severe: 0.0,
+      },
       referralPriority: 'LOW',
-      clinicalNextStep: 'Routine annual diabetic eye screening advised at next primary health checkup.',
-      notes: 'No abnormal retinal microvascular patterns detected.',
-    }
+      clinicalNextStep:
+        'Routine annual diabetic eye screening advised at next primary health checkup.',
+      notes:
+        'No abnormal retinal microvascular patterns detected.',
+    },
   },
+
   {
     key: 'mild',
     label: '2. Mild DR Suspected',
-    description: 'Early focal microaneurysms detected with 81% confidence. Moderate follow-up priority.',
+    description:
+      'Early focal microaneurysms detected with 81% confidence. Moderate follow-up priority.',
     record: {
+      patientName: 'Priya Verma',
       patientCode: 'MH-24-0915',
       patientAge: 55,
       patientSex: 'Female',
@@ -195,17 +234,27 @@ export const DEMO_PRESETS: DemoPreset[] = [
       drGrade: 'MILD_DR',
       drGradeLabel: 'Mild Non-Proliferative DR Suspected',
       confidenceScore: 0.81,
-      classProbabilities: { noDR: 0.12, mild: 0.81, moderate: 0.07, severe: 0.00 },
+      classProbabilities: {
+        noDR: 0.12,
+        mild: 0.81,
+        moderate: 0.07,
+        severe: 0.0,
+      },
       referralPriority: 'MODERATE',
-      clinicalNextStep: 'Recommend tele-ophthalmology review and blood glucose glycemic control monitoring within 3-6 months.',
-      notes: 'Sparse microvascular focal points identified.',
-    }
+      clinicalNextStep:
+        'Recommend tele-ophthalmology review and blood glucose glycemic control monitoring within 3-6 months.',
+      notes:
+        'Sparse microvascular focal points identified.',
+    },
   },
+
   {
     key: 'moderate',
     label: '3. Moderate DR Suspected (Primary Benchmark)',
-    description: 'High attention around macular & mid-peripheral vascular regions. 87% confidence, High referral priority.',
+    description:
+      'High attention around macular & mid-peripheral vascular regions. 87% confidence, High referral priority.',
     record: {
+      patientName: 'Ramesh Kumar',
       patientCode: 'MH-24-0891',
       patientAge: 58,
       patientSex: 'Female',
@@ -214,17 +263,27 @@ export const DEMO_PRESETS: DemoPreset[] = [
       drGrade: 'MODERATE_DR',
       drGradeLabel: 'Moderate Non-Proliferative DR Suspected',
       confidenceScore: 0.87,
-      classProbabilities: { noDR: 0.04, mild: 0.09, moderate: 0.87, severe: 0.00 },
+      classProbabilities: {
+        noDR: 0.04,
+        mild: 0.09,
+        moderate: 0.87,
+        severe: 0.0,
+      },
       referralPriority: 'HIGH',
-      clinicalNextStep: 'Clinical evaluation by a qualified eye-care professional is recommended based on this screening result.',
-      notes: 'Attention concentrated in temporal macular and inferior arcade regions.',
-    }
+      clinicalNextStep:
+        'Clinical evaluation by a qualified eye-care professional is recommended based on this screening result.',
+      notes:
+        'Attention concentrated in temporal macular and inferior arcade regions.',
+    },
   },
+
   {
     key: 'severe',
     label: '4. Severe DR Suspected',
-    description: 'Extensive multi-quadrant microvascular anomalies. 91% confidence, Urgent referral required.',
+    description:
+      'Extensive multi-quadrant microvascular anomalies. 91% confidence, Urgent referral required.',
     record: {
+      patientName: 'Vikram Singh',
       patientCode: 'MH-24-0920',
       patientAge: 64,
       patientSex: 'Male',
@@ -233,55 +292,81 @@ export const DEMO_PRESETS: DemoPreset[] = [
       drGrade: 'SEVERE_DR',
       drGradeLabel: 'Severe Non-Proliferative DR Suspected',
       confidenceScore: 0.91,
-      classProbabilities: { noDR: 0.01, mild: 0.02, moderate: 0.06, severe: 0.91 },
+      classProbabilities: {
+        noDR: 0.01,
+        mild: 0.02,
+        moderate: 0.06,
+        severe: 0.91,
+      },
       referralPriority: 'HIGH',
-      clinicalNextStep: 'Urgent referral to District Eye Hospital or tertiary vitreo-retina clinic within 2 weeks.',
-      notes: 'Venous caliber irregularities and high attention across multiple quadrants.',
-    }
+      clinicalNextStep:
+        'Urgent referral to District Eye Hospital or tertiary vitreo-retina clinic within 2 weeks.',
+      notes:
+        'Venous caliber irregularities and high attention across multiple quadrants.',
+    },
   },
+
   {
     key: 'poor_quality',
     label: '5. Poor Image Quality (Edge Case)',
-    description: 'Out-of-focus blur, poor illumination. Triggers capture quality alert and re-shoot guidance.',
+    description:
+      'Out-of-focus blur, poor illumination. Triggers capture quality alert and re-shoot guidance.',
     record: {
+      patientName: 'Sunita Sharma',
       patientCode: 'MH-24-0925',
       patientAge: 61,
       patientSex: 'Female',
       fundusImage: SAMPLE_FUNDUS_IMAGES.poorQuality,
       imageQuality: 'POOR',
-      qualityIssues: ['Severe motion or lens blur', 'Insufficient light illumination on retina'],
+      qualityIssues: [
+        'Severe motion or lens blur',
+        'Insufficient light illumination on retina',
+      ],
       drGrade: 'MODERATE_DR',
       drGradeLabel: 'Inconclusive - Substandard Image Quality',
       confidenceScore: 0.48,
-      classProbabilities: { noDR: 0.30, mild: 0.30, moderate: 0.25, severe: 0.15 },
+      classProbabilities: {
+        noDR: 0.3,
+        mild: 0.3,
+        moderate: 0.25,
+        severe: 0.15,
+      },
       referralPriority: 'MODERATE',
-      clinicalNextStep: 'Please capture another image with better focus, alignment, and pupil illumination.',
-      notes: 'Image quality index is below clinical acceptance threshold.',
-    }
+      clinicalNextStep:
+        'Please capture another image with better focus, alignment, and pupil illumination.',
+      notes:
+        'Image quality index is below clinical acceptance threshold.',
+    },
   },
+
   {
     key: 'analysis_in_progress',
     label: '6. Analysis in Progress (Demo State)',
-    description: 'Live interactive pipeline demonstrating multi-stage feature extraction and Grad-CAM synthesis.',
+    description:
+      'Live interactive pipeline demonstrating multi-stage feature extraction and Grad-CAM synthesis.',
     record: {
+      patientName: 'Demo Patient',
       patientCode: 'MH-24-0931',
       patientAge: 52,
       patientSex: 'Male',
       fundusImage: SAMPLE_FUNDUS_IMAGES.moderate,
       imageQuality: 'GOOD',
-    }
+    },
   },
+
   {
     key: 'error_state',
     label: '7. Hardware / Upload Error State',
-    description: 'Demonstrates robust error recovery when camera stream or network socket disconnects in rural clinics.',
+    description:
+      'Demonstrates robust error recovery when camera stream or network socket disconnects in rural clinics.',
     record: {
+      patientName: 'Demo Patient',
       patientCode: 'MH-24-0940',
       patientAge: 45,
       patientSex: 'Female',
       imageQuality: 'UNCHECKED',
-    }
-  }
+    },
+  },
 ];
 
 export const SCREENING_TRENDS_DATA = [

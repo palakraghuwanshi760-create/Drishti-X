@@ -182,7 +182,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
           </div>
 
           <p className="text-xs text-slate-600 leading-relaxed">
-            Drishti-X stores only de-identified patient screening records. Retinal fundus imagery is processed strictly for clinical risk stratification.
+            NetraRakshak stores only de-identified patient screening records. Retinal fundus imagery is processed strictly for clinical risk stratification.
           </p>
 
           <div className="mt-4 p-3 bg-teal-50/70 border border-teal-200 rounded-xl text-xs text-teal-900 flex items-center justify-between">

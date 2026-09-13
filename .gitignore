@@ -6,3 +6,9 @@ coverage/
 *.log
 .env*
 !.env.example
+
+ai-venv/
+ai-venv/
+
+__pycache__/
+*.pyc

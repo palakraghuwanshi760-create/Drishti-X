@@ -1,6 +1,6 @@
 export const translations = {
   en: {
-    appName: 'Drishti-X',
+    appName: 'NetraRakshak',
     tagline: 'Explainable AI for Diabetic Retinopathy Screening',
     heroSubtitle: 'AI-assisted retinal screening designed to support earlier detection and referral in resource-constrained communities.',
     startScreening: 'Start Screening',
@@ -12,7 +12,7 @@ export const translations = {
     
     // Disclaimer
     medicalDisclaimerTitle: 'Important Medical Screening Disclaimer',
-    medicalDisclaimerText: 'This AI screening result does not replace examination by a qualified eye-care professional. Drishti-X is a clinical decision-support prototype designed for risk stratification and referral assistance in rural health camps.',
+    medicalDisclaimerText: 'This AI screening result does not replace examination by a qualified eye-care professional. NetraRakshak is a clinical decision-support prototype designed for risk stratification and referral assistance in rural health camps.',
     
     // Navigation
     navDashboard: 'Dashboard',
@@ -72,7 +72,7 @@ export const translations = {
     imageQualityGoodDesc: 'Optic disc, macula, and vascular arches are adequately illuminated and focused for feature detection.',
     imageQualityPoor: 'Image quality: Poor ⚠️',
     imageQualityPoorDesc: 'Please capture another image with better focus, pupil dilation, or illumination.',
-    analyzeImage: 'Analyze Image with Drishti-X',
+    analyzeImage: 'Analyze Image with NetraRakshak',
     
     // Analysis
     analysisTitle: 'AI Screening in Progress',
@@ -140,7 +140,7 @@ export const translations = {
     dataPrivacy: 'Data Privacy & Ethics',
   },
   hi: {
-    appName: 'दृष्टि-X (Drishti-X)',
+    appName: 'दृष्टि-X (NetraRakshak)',
     tagline: 'डायबिटिक रेटिनोपैथी स्क्रीनिंग हेतु व्याख्यात्मक एआई',
     heroSubtitle: 'ग्रामीण एवं सीमित संसाधन वाले स्वास्थ्य केंद्रों में समय पर पहचान और विशेषज्ञ रेफरल हेतु एआई-सहायक रेटिनल स्क्रीनिंग।',
     startScreening: 'स्क्रीनिंग शुरू करें',

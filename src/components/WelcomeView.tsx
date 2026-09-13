@@ -1,223 +1,184 @@
 import React from 'react';
-import { 
-  Eye, 
-  ArrowRight, 
-  ShieldCheck, 
-  Activity, 
-  Globe, 
-  UserCheck, 
-  CheckCircle2, 
-  Layers, 
-  Flame, 
-  MapPin,
-  Sparkles
-} from 'lucide-react';
-import { Language, NavigationPage } from '../types';
-import { translations } from '../i18n/translations';
-import { SAMPLE_FUNDUS_IMAGES } from '../assets/sampleImages';
+import { translations } from '../translations';
+import type { Language } from '../types';
 
 interface WelcomeViewProps {
   lang: Language;
-  onLanguageToggle: (l: Language) => void;
   onStartScreening: () => void;
   onSignIn: () => void;
 }
 
-export const WelcomeView: React.FC<WelcomeViewProps> = ({
+export default function WelcomeView({
   lang,
-  onLanguageToggle,
   onStartScreening,
   onSignIn,
-}) => {
-  const t = translations[lang];
+}: WelcomeViewProps) {
+  const t =
+    translations[lang as keyof typeof translations] ??
+    translations.en;
 
   return (
-    <div id="welcome-page" className="min-h-[calc(100vh-4rem)] flex flex-col justify-between bg-slate-900 text-white relative overflow-hidden">
-      {/* Background Subtle Gradient & Retinal Vascular Grid Pattern */}
-      <div className="absolute inset-0 pointer-events-none opacity-20">
-        <div className="absolute top-1/4 -left-48 w-96 h-96 bg-teal-500 rounded-full blur-[140px]"></div>
-        <div className="absolute bottom-1/4 -right-48 w-96 h-96 bg-cyan-600 rounded-full blur-[140px]"></div>
-        {/* Subtle grid */}
-        <div className="w-full h-full bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:32px_32px] opacity-15"></div>
-      </div>
+    <div className="min-h-screen bg-[#07111f] text-white">
+      <div className="mx-auto flex min-h-screen max-w-7xl flex-col px-6 py-8 lg:px-10">
 
-      {/* Top Bar with Language Toggle & Prototype Badge */}
-      <div className="relative z-10 max-w-7xl mx-auto w-full px-6 pt-6 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-teal-500/20 border border-teal-500/40 flex items-center justify-center text-teal-400">
-            <Eye className="w-4 h-4" />
+        {/* Header */}
+        <header className="flex items-center justify-between">
+          <div>
+            <h1 className="text-2xl font-bold tracking-tight text-white">
+              NetraRakshak
+            </h1>
+
+            <p className="mt-1 text-sm text-slate-400">
+              {t.subtitle}
+            </p>
           </div>
-          <span className="text-xs font-bold uppercase tracking-wider text-teal-300">
-            Clinical Decision Support System
-          </span>
-        </div>
 
-        {/* Language Selector */}
-        <div className="flex items-center bg-slate-800/90 rounded-full p-1 border border-slate-700">
           <button
             type="button"
-            id="welcome-lang-en"
-            onClick={() => onLanguageToggle('en')}
-            className={`px-3 py-1 text-xs font-semibold rounded-full transition-all cursor-pointer ${
-              lang === 'en'
-                ? 'bg-teal-600 text-white shadow-xs'
-                : 'text-slate-400 hover:text-white'
-            }`}
+            onClick={onSignIn}
+            className="rounded-xl border border-teal-400/30 bg-teal-400/10 px-5 py-2.5 text-sm font-semibold text-teal-300 transition hover:bg-teal-400/20"
           >
-            English
+            {t.signIn}
           </button>
-          <button
-            type="button"
-            id="welcome-lang-hi"
-            onClick={() => onLanguageToggle('hi')}
-            className={`px-3 py-1 text-xs font-semibold rounded-full transition-all cursor-pointer font-hindi ${
-              lang === 'hi'
-                ? 'bg-teal-600 text-white shadow-xs'
-                : 'text-slate-400 hover:text-white'
-            }`}
-          >
-            हिन्दी
-          </button>
-        </div>
-      </div>
+        </header>
 
-      {/* Main Hero Section */}
-      <div className="relative z-10 max-w-7xl mx-auto w-full px-6 py-12 lg:py-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        {/* Left Column: Heading & Description */}
-        <div className="lg:col-span-7 space-y-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-teal-950/80 text-teal-300 border border-teal-700/60">
-            <Sparkles className="w-3.5 h-3.5 text-teal-400" />
-            <span>AI for Resource-Constrained Primary Care in India</span>
-          </div>
+        {/* Hero */}
+        <main className="flex flex-1 items-center">
+          <div className="grid w-full gap-12 py-16 lg:grid-cols-2 lg:items-center">
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-none">
-            {lang === 'hi' ? 'दृष्टि-X' : 'Drishti-X'}
-          </h1>
-
-          <p className="text-xl sm:text-2xl font-bold text-teal-300 font-sans tracking-tight">
-            "{t.tagline}"
-          </p>
-
-          <p className="text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed font-normal">
-            {t.heroSubtitle}
-          </p>
-
-          {/* Key Trust Signals */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
-            <div className="p-3 bg-slate-800/60 border border-slate-700/60 rounded-xl">
-              <span className="block text-xs font-bold text-white flex items-center gap-1.5 mb-1">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                Explainable Grad-CAM
-              </span>
-              <span className="text-[11px] text-slate-400">
-                Visual attention heatmaps for clinicians
-              </span>
-            </div>
-
-            <div className="p-3 bg-slate-800/60 border border-slate-700/60 rounded-xl">
-              <span className="block text-xs font-bold text-white flex items-center gap-1.5 mb-1">
-                <CheckCircle2 className="w-3.5 h-3.5 text-teal-400" />
-                Offline-First Edge
-              </span>
-              <span className="text-[11px] text-slate-400">
-                Operates smoothly in rural screening camps
-              </span>
-            </div>
-
-            <div className="p-3 bg-slate-800/60 border border-slate-700/60 rounded-xl">
-              <span className="block text-xs font-bold text-white flex items-center gap-1.5 mb-1">
-                <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400" />
-                Triage & Referral
-              </span>
-              <span className="text-[11px] text-slate-400">
-                Objective referral prioritization for PHCs
-              </span>
-            </div>
-          </div>
-
-          {/* Primary Action Buttons */}
-          <div className="flex flex-col sm:flex-row items-center gap-4 pt-4">
-            <button
-              type="button"
-              id="welcome-start-screening-btn"
-              onClick={onStartScreening}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-teal-600 hover:bg-teal-500 text-white font-bold rounded-2xl shadow-lg shadow-teal-900/40 hover:shadow-teal-600/30 transition-all cursor-pointer text-base group"
-            >
-              <span>{t.startScreening}</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
-
-            <button
-              type="button"
-              id="welcome-sign-in-btn"
-              onClick={onSignIn}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 bg-slate-800/90 hover:bg-slate-700 text-slate-200 font-semibold rounded-2xl border border-slate-700 transition-colors cursor-pointer text-sm"
-            >
-              <UserCheck className="w-4 h-4 text-teal-400" />
-              <span>{t.signIn}</span>
-            </button>
-          </div>
-        </div>
-
-        {/* Right Column: Abstract Retinal Eye Scan Visualization */}
-        <div className="lg:col-span-5 flex justify-center">
-          <div className="relative w-72 h-72 sm:w-96 sm:h-96 rounded-full p-2 bg-gradient-to-tr from-teal-500/30 via-slate-800 to-cyan-500/30 border border-slate-700 shadow-2xl flex items-center justify-center">
-            {/* Outer Retinal Dial */}
-            <div className="absolute inset-4 rounded-full border border-teal-500/20 animate-[spin_30s_linear_infinite]">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-teal-400"></div>
-              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-cyan-400"></div>
-            </div>
-
-            {/* Fundus Retinal Photography Core with Grad-CAM heat simulation */}
-            <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden bg-black border-4 border-slate-800 shadow-inner">
-              <img
-                src={SAMPLE_FUNDUS_IMAGES.moderate}
-                alt="Retinal Fundus Photography"
-                className="w-full h-full object-cover opacity-85"
-                referrerPolicy="no-referrer"
-              />
-              
-              {/* Semi-transparent Grad-CAM Heatmap Radial simulation */}
-              <div className="absolute inset-0 pointer-events-none opacity-60 mix-blend-screen">
-                <div className="absolute top-1/3 right-1/4 w-32 h-32 bg-radial from-red-500 via-orange-400 to-transparent rounded-full blur-md"></div>
-                <div className="absolute bottom-1/3 left-1/3 w-28 h-28 bg-radial from-amber-400 via-teal-500 to-transparent rounded-full blur-md"></div>
+            {/* Left side */}
+            <section>
+              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-teal-400/20 bg-teal-400/10 px-4 py-2 text-sm text-teal-300">
+                <span className="h-2 w-2 rounded-full bg-teal-400" />
+                AI-assisted retinal screening
               </div>
 
-              {/* Scanning Ray Line */}
-              <div className="absolute inset-x-0 h-1 bg-gradient-to-r from-transparent via-cyan-300 to-transparent shadow-[0_0_12px_rgba(34,211,238,0.8)] animate-pulse"
-                style={{ top: '48%' }}
-              />
+              <h2 className="max-w-3xl text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
+                {t.welcomeBack}
+              </h2>
 
-              {/* Center HUD reticle */}
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="w-20 h-20 rounded-full border border-teal-400/40 flex items-center justify-center">
-                  <div className="w-1.5 h-1.5 rounded-full bg-teal-300"></div>
+              <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
+                {t.subtitle}
+              </p>
+
+              <p className="mt-4 max-w-2xl text-base leading-7 text-slate-400">
+                {t.readyPrompt}
+              </p>
+
+              <div className="mt-8 flex flex-wrap gap-4">
+                <button
+                  type="button"
+                  onClick={onStartScreening}
+                  className="rounded-xl bg-teal-400 px-6 py-3.5 font-semibold text-slate-950 shadow-lg shadow-teal-400/10 transition hover:bg-teal-300"
+                >
+                  {t.startScreening}
+                </button>
+
+                <button
+                  type="button"
+                  onClick={onSignIn}
+                  className="rounded-xl border border-slate-700 bg-slate-900/60 px-6 py-3.5 font-semibold text-white transition hover:border-teal-400/40 hover:bg-slate-800"
+                >
+                  {t.signIn}
+                </button>
+              </div>
+            </section>
+
+            {/* Right visual */}
+            <section className="relative">
+              <div className="relative overflow-hidden rounded-3xl border border-slate-700/70 bg-[#0c1929] p-8 shadow-2xl">
+
+                {/* Decorative glow */}
+                <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-teal-400/10 blur-3xl" />
+                <div className="absolute -bottom-20 -left-20 h-56 w-56 rounded-full bg-blue-500/10 blur-3xl" />
+
+                <div className="relative">
+
+                  <div className="mb-8 flex items-center justify-between">
+                    <div>
+                      <p className="text-sm font-medium text-slate-400">
+                        Screening overview
+                      </p>
+
+                      <p className="mt-1 text-xl font-semibold text-white">
+                        NetraRakshak
+                      </p>
+                    </div>
+
+                    <div className="rounded-full border border-teal-400/20 bg-teal-400/10 px-3 py-1 text-xs font-medium text-teal-300">
+                      AI-assisted
+                    </div>
+                  </div>
+
+                  {/* Retina-style visual */}
+                  <div className="mx-auto flex aspect-square max-w-sm items-center justify-center rounded-full border border-teal-400/20 bg-[#07111f]">
+
+                    <div className="flex h-[72%] w-[72%] items-center justify-center rounded-full border border-teal-300/30 bg-gradient-to-br from-teal-400/10 to-blue-500/10 shadow-[0_0_80px_rgba(45,212,191,0.08)]">
+
+                      <div className="flex h-[58%] w-[58%] items-center justify-center rounded-full border border-teal-300/20 bg-[#0b1727]">
+
+                        <div className="h-20 w-20 rounded-full bg-teal-400/10 shadow-[0_0_50px_rgba(45,212,191,0.15)]" />
+
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Feature cards */}
+                  <div className="mt-8 grid grid-cols-3 gap-3">
+
+                    <div className="rounded-xl border border-slate-700/70 bg-slate-900/50 p-4">
+                      <p className="text-xs text-slate-500">
+                        Screening
+                      </p>
+
+                      <p className="mt-1 text-sm font-semibold text-white">
+                        AI-assisted
+                      </p>
+                    </div>
+
+                    <div className="rounded-xl border border-slate-700/70 bg-slate-900/50 p-4">
+                      <p className="text-xs text-slate-500">
+                        Explainability
+                      </p>
+
+                      <p className="mt-1 text-sm font-semibold text-white">
+                        Grad-CAM
+                      </p>
+                    </div>
+
+                    <div className="rounded-xl border border-slate-700/70 bg-slate-900/50 p-4">
+                      <p className="text-xs text-slate-500">
+                        Tracking
+                      </p>
+
+                      <p className="mt-1 text-sm font-semibold text-white">
+                        Longitudinal
+                      </p>
+                    </div>
+
+                  </div>
                 </div>
               </div>
-            </div>
-
-            {/* Floating Info Tag */}
-            <div className="absolute -bottom-2 bg-slate-900/95 border border-teal-500/40 text-teal-300 px-4 py-2 rounded-xl text-xs font-mono shadow-xl flex items-center gap-2">
-              <Activity className="w-3.5 h-3.5 text-teal-400 animate-pulse" />
-              <span>Optic Disc & Macula Aligned</span>
-            </div>
+            </section>
           </div>
-        </div>
-      </div>
+        </main>
 
-      {/* Bottom Medical Disclaimer & National Innovation Competition Footer */}
-      <div className="relative z-10 border-t border-slate-800/80 bg-slate-950/60 px-6 py-4">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
-          <p className="text-center sm:text-left text-[11px] leading-relaxed max-w-3xl">
-            <span className="font-bold text-amber-400">Medical Disclaimer: </span>
-            {t.medicalDisclaimerText}
-          </p>
+        {/* Footer */}
+        <footer className="border-t border-slate-800 pt-6">
+          <div className="flex flex-col gap-2 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
 
-          <span className="shrink-0 text-[11px] font-medium text-slate-500">
-            Drishti-X • National Student Innovation Prototype
-          </span>
-        </div>
+            <p>
+              {t.dataPrivacy}
+            </p>
+
+            <p>
+              NetraRakshak • AI-assisted screening prototype
+            </p>
+
+          </div>
+        </footer>
+
       </div>
     </div>
   );
-};
+}
