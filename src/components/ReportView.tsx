@@ -92,7 +92,7 @@ export const ReportView: React.FC<ReportViewProps> = ({
                   <Eye className="w-5 h-5" />
                 </div>
                 <h1 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
-                  Drishti-X
+                 NetraRakshak
                 </h1>
               </div>
               <p className="text-xs font-bold text-teal-800 uppercase tracking-wider">

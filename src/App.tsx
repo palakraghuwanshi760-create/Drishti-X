@@ -2338,38 +2338,23 @@ const [isLoggedIn, setIsLoggedIn] =
 
 
           {/* DASHBOARD */}
+{/* DASHBOARD */}
 
-          {currentPage === 'dashboard' && (
-            <>
-              <DashboardView
-                stats={stats}
-                recentScreenings={
-                  screenings
-                }
-                lang={lang}
-                onNavigate={
-                  setCurrentPage
-                }
-                onSelectRecord={(
-                  rec
-                ) => {
-                  setActiveRecord(
-                    rec
-                  );
-
-                  setCurrentPage(
-                    'result'
-                  );
-                }}
-              />
-
-              <PatientDiseaseTrend
-                screenings={
-                  screenings
-                }
-              />
-            </>
-          )}
+{currentPage === 'dashboard' && (
+  <>
+    <DashboardView
+      stats={stats}
+      recentScreenings={screenings}
+      lang={lang}
+      userName={currentWorker?.name}
+      onNavigate={setCurrentPage}
+      onSelectRecord={(rec) => {
+        setActiveRecord(rec);
+        setCurrentPage('result');
+      }}
+    />
+  </>
+)}
 
 
           {/* NEW SCREENING */}

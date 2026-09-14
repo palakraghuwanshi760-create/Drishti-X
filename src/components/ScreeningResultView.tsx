@@ -11,6 +11,7 @@ import {
   MapPin,
   UserRound,
   Activity,
+  Eye,
 } from 'lucide-react';
 
 import { ResultCard } from './ResultCard';
@@ -267,7 +268,7 @@ export const ScreeningResultView: React.FC<ScreeningResultViewProps> = ({
 
           <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
             <div className="mb-4 flex items-center gap-2">
-              <Activity className="h-4 w-4 text-teal-600" />
+              <Eye className="h-4 w-4 text-teal-600" />
 
               <h4 className="text-[11px] font-bold uppercase tracking-wider text-slate-800">
                 Screening Context
